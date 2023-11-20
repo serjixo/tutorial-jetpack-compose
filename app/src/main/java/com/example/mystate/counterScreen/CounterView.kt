@@ -1,5 +1,6 @@
 package com.example.mystate.counterScreen
 
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -7,27 +8,34 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
+
+/* TODO ahora recibimos por parámetro
+    (de momento de forma manual luego veremos la inyección de dependencias)
+    y utilizaremos el ViewModel para leer y modificar el estado.
+    utilizaremos el observeasState para subscribirnos a los datos y que el
+    composable haga recomposición cuando el valor cambia
+    */
 @Composable
-fun MyCounter() {
+fun MyCounter(counterViewModel: CounterViewModel) {
 
-    var count by remember { mutableStateOf(0) }
-
+    /*TODO Aquí sustituiremos la línea de la lógica del estado por una
+       en la que leemos el valor del ViewModel*/
+    val count by counterViewModel.count.observeAsState(initial = 0)
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     )
     {
-        Button(onClick = { count += 1 }) {
+//TODO pasamos a utilizar el método para la lógica en lugar de modificar directamente,
+        Button(onClick = { counterViewModel.incrementCount() }) {
             Text(text = "pulsame")
         }
-        Text(text = "he sido pulsado ${count}")
-    }
 
+        Text(text = "hesido puslado ${count}")
+    }
 }

@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import com.example.mystate.counterScreen.CounterViewModel
 import com.example.mystate.counterScreen.MyCounter
 import com.example.mystate.ui.theme.MyStateTheme
 
@@ -20,7 +21,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    MyCounter()
+                    MyCounter(CounterViewModel())
                 }
             }
         }

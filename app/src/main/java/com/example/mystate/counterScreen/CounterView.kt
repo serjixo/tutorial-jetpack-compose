@@ -16,8 +16,6 @@ import androidx.compose.ui.Modifier
 @Composable
 fun MyCounter() {
 
-//TODO no es una buena práctica manter el estado/ lógica dentro de la función composable
-
     var count by remember { mutableStateOf(0) }
 
     Column(
@@ -26,11 +24,10 @@ fun MyCounter() {
         horizontalAlignment = Alignment.CenterHorizontally
     )
     {
-//TODO aqui ejecuta lógica
         Button(onClick = { count += 1 }) {
             Text(text = "pulsame")
         }
-        Text(text = "hesido puslado ${count}")
+        Text(text = "he sido pulsado ${count}")
     }
 
 }

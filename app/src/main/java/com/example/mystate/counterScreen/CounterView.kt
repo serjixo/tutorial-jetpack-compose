@@ -16,8 +16,7 @@ import androidx.compose.ui.Modifier
 @Composable
 fun MyCounter() {
 
-    //TODO en lugar de utilizar todo el rato el .value podemos añadir el keyword by, funciona como getter / setter
-    // de hecho fijate en los imports que se han añadido con el by.
+//TODO no es una buena práctica manter el estado/ lógica dentro de la función composable
 
     var count by remember { mutableStateOf(0) }
 
@@ -27,8 +26,8 @@ fun MyCounter() {
         horizontalAlignment = Alignment.CenterHorizontally
     )
     {
-        //TODO al añadir el by ahora no necesitamos el by
-        Button(onClick = { count = 0 }) {
+//TODO aqui ejecuta lógica
+        Button(onClick = { count += 1 }) {
             Text(text = "pulsame")
         }
         Text(text = "hesido puslado ${count}")
